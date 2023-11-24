@@ -24,49 +24,74 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 
 <h2>List of Prerequisites</h2>
 
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-- Item 5
+- Active Azure acccount & subscription
+- Resource Group for Virtual Network
+- Microsoft Remote Desktop (Mac Users)
 
 <h2>Azure VM and osTicket Installation Steps</h2>
 
 <h2>Installation Steps</h2>
+<div style="text-align: center;">
+<img src="https://i.imgur.com/S1MHooT.png" width="50%" alt="Reduced Size Image"/>
+<img src="https://i.imgur.com/JEgZAaq.png" width="50%" alt="Reduced Size Image"/>
+</div>
 <ol>
-  <li>Create an Azure Virtual Machine Windows 10, 4 vCPUs
+  <li>Create an Azure Virtual Machine Windows 10, 2 or 4 vCPUs
     <ul>
-      <li>Name: Vm-osticket</li>
-      <li>Username: labuser (for example/whatever you chose)</li>
-      <li>Password: osTicketPassword1! (for example/whatever you chose)</li>
+      <li>Click "Create" or "Search" for Virtual Machine</li>
+      <li>Name: xxxx (e.g. osTicket-Lab)</li>
+      <li>Username: xxxx (e.g. admin_user)</li>
+      <li>Password: xxxx (e.g. Password1234!)<li>Confirm Licensing
+      <li>(Optional) Set-up auto-shutdown>Management
+      <li>Review & Create
     </ul>
   </li>
 
-  <li>Open this: <a href="path/to/InstallationFiles">Installation Files</a>
-    <p>We will use these files to install osTicket and some of the dependencies. I’m using this offline version to make sure everyone is using the same version of all the files :)</p>
-  </li>
-
-  <li>Install/Enable IIS in Windows WITH CGI and Common HTTP Features
-    <ul>
-      <li>World Wide Web Services -> Application Development Features ->
-        <ul>
-          <li>[X] CGI</li>
-          <li>[X] Common HTTP Features</li>
-        </ul>
-      </li>
-      <li>AND IIS Management Console</li>
-      <li>Internet Information Services -> Web Management Tools -> IIS Management Console
-        <ul>
-          <li>[X] IIS Management Console</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-
-  <li>From the Installation Files, download and install PHP Manager for IIS (<code>PHPManagerForIIS_V1.5.0.msi</code>).</li>
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/11cUJij.png" width="50%" alt="Image 1">
+    <img src="https://i.imgur.com/VxQM2rv.png" width="50%" alt="Image 2">
+    <p>Windows & Mac Remote Desktop Displays</p>
+</div>
+<li>Log On to VM</li>
+  <ul>
+    <li>Copy public IP Address (Resource group > "Virtual Machine")</li>
+    <li>Access Remote Desktop & connect using the IP</li>
+    <li>Login with created credentials</li>
+  </ul>
+  <div style="text-align: center;">
+    <img src="https://i.imgur.com/NGVMM0U.png" width="50%" alt="Image 2">
+</div>
+<li>Install/Enable IIS in Windows VM with CGI and Common HTTP Features
+  <ul>
+    <li>Control Panel -> Programs -> Turn Windows Features on/off</li>
+    <li>Internet Information Services -> World Wide Web Services -> Application Development Features ->
+      <ul>
+        <li>[X] CGI</li>
+        <li>[X] Common HTTP Features</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Install/Enable IIS Management Console
+      <ul>
+        <li>Internet Information Services -> Web Management Tools -> IIS Management Console
+          <ul>
+            <li>[X] IIS Management Console</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div style="text-align: center;">
+    <img src="https://i.imgur.com/VUSKHrh.png" width="50%" alt="Image 2">
+</div>
+</li>Verify configuration. Open browser and visit 127.0.0.1
+ <li>From the Installation Files, download and install PHP Manager for IIS (<code>PHPManagerForIIS_V1.5.0.msi</code>).</li>
 
   <li>From the Installation Files, download and install the Rewrite Module (<code>rewrite_amd64_en-US.msi</code>).</li>
-
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/hB20dE5.png" width="50%" alt="Image 2">
+</div>
   <li>Create the directory <code>C:\PHP</code>.</li>
 
   <li>From the Installation Files, download PHP 7.3.8 (<code>php-7.3.8-nts-Win32-VC15-x86.zip</code>) and unzip the contents into <code>C:\PHP</code>.
@@ -81,15 +106,28 @@ This tutorial outlines the prerequisites and installation of the open-source hel
     <li>Typical Setup</li>
     <li>Launch Configuration Wizard (after install)</li>
     <li>Standard Configuration</li>
-    <li>Password1</li>
+    <li>Server Name: osTicket SQL</li>
+    <li>Password1234!</li>
   </ul>
 </p>
 
 <p>Open IIS as an Admin.</p>
-
-<p>Register PHP from within IIS.</p>
-
-<p>Reload IIS (Open IIS, Stop and Start the server).</p>
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/yTnqZwi.png" width="50%" alt="Image 2">
+</div>
+<p>Register PHP from within IIS.
+  <ul>
+    <li>PHP Manager </li>
+    <li>Register new PHP version </li>
+    <li>C: -> PHP -> php-cgi
+  </ul>
+</p>
+<p>Reload IIS (Open IIS, Stop and Start the server).
+  <ul>
+      <li>Go to osTicket Home
+      <li>Click restart on right side
+  </ul>    
+</p>
 
 <p>Install osTicket v1.15.8
   <ul>
@@ -99,14 +137,16 @@ This tutorial outlines the prerequisites and installation of the open-source hel
   </ul>
 </p>
 
-<p>Reload IIS (Open IIS, Stop and Start the server).</p>
+<p>Restart IIS (or Stop and Start the server).</p>
 
-<p>Go to sites -> Default -> osTicket
+<p>With/in IIS go to sites -> Default -> osTicket
   <ul>
     <li>On the right, click “Browse *:80”</li>
   </ul>
 </p>
-
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/KAAkMPo.png" width="50%" alt="Image 2">
+</div>
 <p>Note that some extensions are not enabled
   <ul>
     <li>Go back to IIS, sites -> Default -> osTicket</li>
@@ -120,28 +160,37 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 </p>
 
 <p>Rename: ost-config.php
-From: C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php
-To: C:\inetpub\wwwroot\osTicket\include\ost-config.php</p>
-
+  <ul>
+    <li>From: C:\inetpub\wwwroot\osTicket\include\ost-sampleconfig.php
+    <li>To: C:\inetpub\wwwroot\osTicket\include\ost-config.php</p>
+  </ul> 
+  <div style="text-align: center;">
+    <img src="https://i.imgur.com/wfqZlj6.png" width="50%" alt="Image 2">
+</div>
 <p>Assign Permissions: ost-config.php
   <ul>
-    <li>Disable inheritance -> Remove All</li>
-    <li>New Permissions -> Everyone -> All</li>
+    <li>Disable inheritance - Right click -> Properties -> Security -> Advanced -> Disable inheritance</li>
+    <li>New Permissions - Add -> Select a principal -> "everyone" -> OK -> Full Control -> OK & Apply</li>
+
   </ul>
 </p>
 
 <p>Continue Setting up osTicket in the browser (click Continue)
   <ul>
-    <li>Name Helpdesk</li>
+    <li>Name Helpdesk (e.g. HelpdeskCO)</li>
     <li>Default email (receives email from customers)</li>
+    <li>Complete Admin User
+    <li>STOP - Proceed to next step
   </ul>
 </p>
-
+ <div style="text-align: center;">
+    <img src="https://i.imgur.com/uSPKDXi.png" width="50%" alt="Image 2">
+</div>
 <p>From the Installation Files, download and install HeidiSQL.
   <ul>
     <li>Open Heidi SQL</li>
-    <li>Create a new session, root/Password1</li>
-    <li>Connect to the session</li>
+    <li>Create a new session, root/Password1234!</li>
+    <li>Connect to the session (selecting OK)</li>
     <li>Create a database called “osTicket”</li>
   </ul>
 </p>
@@ -154,54 +203,19 @@ To: C:\inetpub\wwwroot\osTicket\include\ost-config.php</p>
     <li>Click “Install Now!”</li>
   </ul>
 </p>
+<div style="text-align: center;">
+    <img src="https://i.imgur.com/k1eZVl2.png" width="50%" alt="Image 2">
+<div>
 
-<p>Congratulations, hopefully it is installed with no errors!
-  <br>Browse to your help desk login page: <a href="http://localhost/osTicket/scp/login.php">http://localhost/osTicket/scp/login.php</a></p>
+  <br>Browse to your help desk login page: 
+    <br><a href="http://localhost/osTicket/scp/login.php">http://localhost/osTicket/scp/login.php</a></p>
 
 <p>End Users osTicket URL:
   <br><a href="http://localhost/osTicket/">http://localhost/osTicket/</a></p>
-
-<p>Clean up
-  <ul>
-    <li>Delete: C:\inetpub\wwwroot\osTicket\setup</li>
-    <li>Set Permissions to “Read” only: C:\inetpub\wwwroot\osTicket\include\ost-config.php</li>
+<div>
   </ul>
-</p>
-
-<p>Notes:
-  <br>Browse to your help desk login page: <a href="http://localhost/osTicket/scp/login.php">http://localhost/osTicket/scp/login.php</a>
-  <br>End Users osTicket URL: <a href="http://localhost/osTicket/">http://localhost/osTicket/</a></p>
-
-
-
-
-  
-
-</ol>
-
-</body>
-</html>
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+</li>
+<ul>Clean up
+    <li>Delete: C:\inetpub\wwwroot\osTicket\setup</li>
+    <li>Set Permissions to “Read” only: C:\inetpub\wwwroot\osTicket\include\ost-config.php
+    <ul> Right Click -> Proterties-> Security -> Advanced -> Edit "Everyone" -> Read/Read & Execute-> OK/Apply
