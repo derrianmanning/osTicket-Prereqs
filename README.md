@@ -1,10 +1,7 @@
-<p align="center">
-<img src="https://i.imgur.com/50g0PRK.png"/>
-</p>
-
-<title>Azure VM and osTicket Installation</title>
-</head>
-<body>
+<div align="center">
+        <h1 style="font-weight: bold;">Azure VM and osTicket Installation</h1>
+        <img src="https://i.imgur.com/50g0PRK.png" alt="Image Description"/>
+    </div>
 
 <!-- Azure VM and osTicket Installation Steps -->
 
