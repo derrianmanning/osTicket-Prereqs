@@ -23,7 +23,7 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 
 - Active Azure acccount & subscription
 - Resource Group for Virtual Network
-- Microsoft Remote Desktop (Mac Users)
+- Microsoft Remote Desktop.app (Mac Users)
 
 <h2>Azure VM and osTicket Installation Steps</h2>
 
@@ -47,7 +47,7 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 <div style="text-align: center;">
     <img src="https://i.imgur.com/11cUJij.png" width="50%" alt="Image 1">
     <img src="https://i.imgur.com/VxQM2rv.png" width="50%" alt="Image 2">
-    <p>Windows & Mac Remote Desktop Displays</p>
+    <p>Windows & Mac Remote Desktop Connection Portals</p>
 </div>
 <li>Log On to VM</li>
   <ul>
