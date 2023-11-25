@@ -39,7 +39,6 @@ This tutorial outlines the prerequisites and installation of the open-source hel
       <li>Name: xxxx (e.g. osTicket-Lab)</li>
       <li>Username: xxxx (e.g. admin_user)</li>
       <li>Password: xxxx (e.g. Password1234!)<li>Confirm Licensing
-      <li>(Optional) Set-up auto-shutdown>Management
       <li>Review & Create
     </ul>
   </li>
